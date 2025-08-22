@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Agendamentos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Agendamentos</h1>
+        <table id="agendamentosTable">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os agendamentos serão inseridos aqui via JavaScript -->
+            </tbody>
+        </table>
+        
+        <a href="/" class="btn-voltar">Voltar</a>
+    </div>
+    
+    <script th:src="@{/script.js}"></script>
+</body>
+</html>
