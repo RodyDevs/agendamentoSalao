@@ -21,8 +21,25 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Cliente> criar(@RequestBody Cliente cliente) {
-        Cliente novoCliente = clienteRepository.save(cliente);
-        return ResponseEntity.ok(novoCliente);
+        try {
+            if (cliente.getNome() == null || cliente.getNome().trim().isEmpty()) {
+                return ResponseEntity.badRequest().build();
+            }
+            if (cliente.getTelefone() == null || cliente.getTelefone().trim().isEmpty()) {
+                return ResponseEntity.badRequest().build();
+            }
+            
+            // Se o e-mail estiver vazio, defina como null para evitar problemas com unique constraint
+            if (cliente.getEmail() != null && cliente.getEmail().trim().isEmpty()) {
+                cliente.setEmail(null);
+            }
+            
+            Cliente novoCliente = clienteRepository.save(cliente);
+            return ResponseEntity.ok(novoCliente);
+        } catch (Exception e) {
+            e.printStackTrace(); // Log do erro no servidor
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @GetMapping("/{id}")

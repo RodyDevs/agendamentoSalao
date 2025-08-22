@@ -135,12 +135,85 @@ tr:hover {
     background-color: #f5f5f5;
 }
 
-td button {
-    padding: 6px 12px;
-    font-size: 12px;
-    background-color: #dc3545;
+.clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
 }
 
-td button:hover {
+.cliente-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cliente-card h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.cliente-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-label {
+    color: #666;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.info-value {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.cliente-acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.btn-editar {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+}
+
+.btn-editar:hover {
+    background-color: #0056b3;
+}
+
+.btn-excluir:hover {
     background-color: #c82333;
 }
