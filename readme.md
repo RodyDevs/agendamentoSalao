@@ -11,7 +11,7 @@ Este projeto consiste em um sistema web para gerenciamento de agendamentos em um
 ## 🛠️ Tecnologias Utilizadas
 
 * `Java 21`
-* `Spring Boot 2.5.0`
+* `Spring Boot 3.2.0`
 * `Spring Data JPA`
 * `Hibernate ORM`
 * `MySQL`
