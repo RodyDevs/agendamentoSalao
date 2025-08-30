@@ -1,17 +1,222 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f5f5f5;
+    padding: 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #2d3436;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a73e8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1557b0;
 }
 
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    backdrop-filter: blur(10px);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.table {
+    animation: fadeIn 0.7s ease-out;
+}
+
+/* Navbar personalizada */
+.navbar {
+    padding: 1.2rem 0;
+    background: white !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: #1a73e8 !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-right: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-nav {
+    gap: 1rem;
+}
+
+.nav-link {
+    color: #1a73e8 !important;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: white;
+    text-align: center;
+    min-width: 120px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover {
+    background: #1a73e8;
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    background: #1a73e8 !important;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(26,115,232,0.3);
+}
+
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Estilo comum para tabelas e grids */
+table, .grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background: #f8f9fa;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td, .grid-header div, .grid-row div {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+    color: #2d3436;
+}
+
+th, .grid-header div {
+    background: #1a73e8;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(even) {
+    background: white;
+}
+
+tr:nth-child(odd) {
+    background: #f8f9fa;
+}
+
+tr:hover {
+    background: #e3f2fd;
+}
+
+/* Estilo para o botão Cancelar */
+.btn-danger {
+    background: #dc3545;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(220,53,69,0.3);
+}
+
+/* Botões personalizados */
+.btn {
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border: none;
+    color: white;
+}
+
+.btn-info:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(74,144,226,0.3);
+}
+
+tr:hover, .grid-row:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+/* Grid específico */
+.grid-header, .grid-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    gap: 10px;
+}
+
+/* Botões nas tabelas/grids */
+.btn-excluir, .btn-editar {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-editar {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.btn-excluir:hover, .btn-editar:hover {
+    opacity: 0.9;
 }
 
 h1 {

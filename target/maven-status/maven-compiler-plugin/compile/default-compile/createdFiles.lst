@@ -1,10 +1,12 @@
-com\salao\SalaoApplication.class
 com\salao\controller\BaseController.class
 com\salao\repository\AgendamentoRepository.class
 com\salao\model\Agendamento.class
-com\salao\repository\ClienteRepository.class
 com\salao\controller\AgendamentoController.class
-com\salao\model\Cliente.class
 com\salao\repository\ServicoRepository.class
 com\salao\model\Servico.class
-com\salao\controller\PaginasController.class
+com\salao\controller\ClienteController.class
+com\salao\SalaoApplication.class
+com\salao\controller\ResponseMessage.class
+com\salao\repository\ClienteRepository.class
+com\salao\model\Cliente.class
+com\salao\controller\PaginaController.class

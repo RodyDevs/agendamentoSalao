@@ -2,6 +2,7 @@ package com.salao.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "clientes")
@@ -10,16 +11,17 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String telefone;
 
-    @Column(unique = true)
+    @Column(length = 100)
     private String email;
 
     @Column(name = "data_nascimento")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
 
     @Column(length = 11)

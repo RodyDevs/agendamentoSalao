@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Agendamento - Salão</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Salão de Beleza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastrar">Cadastrar Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/agendamento/lista">Agendamentos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <h2 class="mb-4">Novo Agendamento</h2>
+        
+        <form id="agendamentoForm">
+            <div class="mb-3">
+                <label for="cliente" class="form-label">Cliente</label>
+                <select class="form-select" id="cliente" required>
+                    <option value="">Selecione um cliente</option>
+                    <option th:each="cliente : ${clientes}" 
+                            th:value="${cliente.id}" 
+                            th:text="${cliente.nome}">
+                    </option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="servico" class="form-label">Serviço</label>
+                <select class="form-select" id="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="Corte">Corte</option>
+                    <option value="Pintura">Pintura</option>
+                    <option value="Manicure">Manicure</option>
+                    <option value="Pedicure">Pedicure</option>
+                    <option value="Depilação">Depilação</option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="horario" class="form-label">Horário</label>
+                <input type="time" class="form-control" id="horario" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Agendar</button>
+            <a href="/agendamento/lista" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn-cadastrar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-cadastrar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Cliente</h1>
+        <form id="formCliente">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            
+            <button type="button" onclick="cadastrarCliente()" class="btn-cadastrar">Cadastrar</button>
+        </form>
+    </div>
+    
+    <script>
+        function cadastrarCliente() {
+            const cliente = {
+                nome: document.getElementById('nome').value,
+                telefone: document.getElementById('telefone').value,
+                email: document.getElementById('email').value
+            };
+            
+            console.log('Enviando dados:', cliente);
+            
+            fetch('/api/clientes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(cliente)
+        })
+        .then(response => response.json())
+        .then(data => {
+            mostrarMensagem(data.mensagem, data.cliente ? 'sucesso' : 'erro');
+            if (data.cliente) {
+                document.getElementById('formCliente').reset();
+            }
+        })
+        .catch(error => {
+            mostrarMensagem('Erro ao cadastrar cliente', 'erro');
+        });
+        }
+    </script>
+</body>
+</html>
